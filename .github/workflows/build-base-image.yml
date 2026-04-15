@@ -68,14 +68,16 @@ jobs:
       - name: Extract repository name
         id: repo
         run: echo "REPO=$(basename ${{ github.repository }})" >> $GITHUB_ENV
-
-      - name: Build and push multi-arch image
+      
+      - name: Build and push Dashboard
         uses: docker/build-push-action@v6
         with:
           platforms: linux/amd64,linux/arm64
           push: true
           file: Dockerfile-base
-          tags: jumpserver/core-base:${{ env.IMAGE_TAG }}
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/akto-dashboard:${{ github.event.inputs.release_version }}
+            ghcr.io/${{ github.repository_owner }}/akto-dashboard:latest
 
       - name: Update Dockerfile
         run: |
