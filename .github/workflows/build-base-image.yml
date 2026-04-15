@@ -76,8 +76,8 @@ jobs:
           push: true
           file: Dockerfile-base
           tags: |
-            ghcr.io/${{ github.repository_owner }}/akto-dashboard:${{ github.event.inputs.release_version }}
-            ghcr.io/${{ github.repository_owner }}/akto-dashboard:latest
+            ghcr.io/${{ github.repository_owner }}/core-base:${{ github.event.inputs.release_version }}
+            ghcr.io/${{ github.repository_owner }}/core-base:latest
 
       - name: Update Dockerfile
         run: |
